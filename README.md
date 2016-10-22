@@ -27,7 +27,7 @@ let oldDb = {
       charset: 'utf8',
       timestamps: false
     },
-    modelsFolder: path.resolve('./old-db-models')
+    modelsFolder: path.resolve(__dirname, './old-db-models')
   }
   
 //new data define
@@ -47,7 +47,7 @@ let newDb = {
     charset: 'utf8',
     timestamps: false
   },
-  modelsFolder: path.resolve('./new-db-models')
+  modelsFolder: path.resolve(__dirname, './new-db-models')
 }
 
 //config

@@ -7,7 +7,7 @@
 ## use
 ```javascript
 
-const transferTool = require('sequelize-data-transfer')
+const transfer = require('sequelize-data-transfer').transfer
 let path = require('path')
 
 //old data define
@@ -63,7 +63,7 @@ let transferConfig = [{
 }]
 
 //now do the transfer
-transferTool({oldDb, newDb, transferConfig})
+transfer({oldDb, newDb, transferConfig})
 .then(() => {
   console.log('done')
 })

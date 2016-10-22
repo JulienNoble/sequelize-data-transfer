@@ -12,4 +12,5 @@ addons:
 before_install:
   - createuser -s -w username1
   - psql -d template1 -c "ALTER USER username1 WITH PASSWORD 'password1';"
-  - psql -c 'create database dbname1;create database dbname2;' -U postgres
+  - psql -d template1 -c "create database dbname1;"
+  - psql -d template1 -c "create database dbname2;"

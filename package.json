@@ -1,0 +1,39 @@
+{
+  "name": "sequelize-data-transfer",
+  "version": "0.0.1",
+  "description": "transfer `sequelize` db data from one db to another db, with different data model",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zxdong262/sequelize-data-transfer.git"
+  },
+  "keywords": [
+    "sequelize",
+    "transfer",
+    "data",
+    "sql"
+  ],
+  "author": "ZHAO Xudong <zxdong@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zxdong262/sequelize-data-transfer/issues"
+  },
+  "homepage": "https://github.com/zxdong262/sequelize-data-transfer#readme",
+  "dependencies": {
+    "co": "^4.6.0",
+    "lodash": "^4.16.4",
+    "pg": "^6.1.0",
+    "sequelize": "^3.24.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "shortid": "^2.2.6"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}

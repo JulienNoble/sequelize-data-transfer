@@ -1,0 +1,15 @@
+language: node_js
+sudo: required
+dist: trusty
+branches:
+  only:
+    - master
+node_js:
+  - "6"
+addons:
+  postgresql: "9.3"
+
+before_install:
+  - createuser -s -w username1
+  - psql -d template1 -c "ALTER USER username1 WITH PASSWORD 'password1';"
+  - psql -c 'create database dbname1;create database dbname2;' -U postgres

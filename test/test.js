@@ -114,6 +114,15 @@ describe(pkg.name, function() {
       let count = all.length
       expect(count).to.equal(2)
       expect(all[0].username).to.equal('x1')
+      expect(all[1].username).to.equal('x2')
+      return sql2.db.Company.findAll()
+    })
+    .then(res => {
+      let all = res.map(r => r.get({ plain: true }))
+      let count = all.length
+      expect(count).to.equal(2)
+      expect(all[0].name).to.equal('c1')
+      expect(all[1].name).to.equal('c2')
       done()
     }) 
     .catch(e => console.log(e.stack))

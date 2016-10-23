@@ -1,5 +1,4 @@
 
-const _ = require('lodash')
 const Sequelize = require('sequelize')
 const co = require('co')
 const fs = require('fs')
@@ -39,7 +38,6 @@ function* initDb(model) {
   sequelize.db = db
   yield sequelize.authenticate()
   yield sequelize.sync()
-  console.log(db)
   return sequelize
 }
 

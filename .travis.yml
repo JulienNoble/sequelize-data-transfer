@@ -10,6 +10,7 @@ addons:
   postgresql: "9.3"
 
 before_install:
+  - npm install pg sequelize
   - createuser -s -w username1
   - psql -d template1 -c "ALTER USER username1 WITH PASSWORD 'password1';"
   - psql -d template1 -c "create database dbname1;"

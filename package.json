@@ -1,6 +1,6 @@
 {
   "name": "sequelize-data-transfer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "transfer `sequelize` db data from one db to another db, with different data model",
   "main": "index.js",
   "scripts": {
@@ -23,15 +23,15 @@
   },
   "homepage": "https://github.com/zxdong262/sequelize-data-transfer#readme",
   "dependencies": {
-    "co": "^4.6.0",
-    "lodash": "^4.16.4",
-    "pg": "^6.1.0",
-    "sequelize": "^3.24.5"
+    "co": "^4.6.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.1.2",
     "shortid": "^2.2.6"
+  },
+  "peerDependencies": {
+    "sequelize": "*"
   },
   "engines": {
     "node": ">=6.0.0"

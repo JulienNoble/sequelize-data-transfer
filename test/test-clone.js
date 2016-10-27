@@ -11,29 +11,29 @@ const { transfer, initDb } = require('..')
 
 //old data define
 let oldDb = {
-    dialect: 'postgres',
-    host: 'localhost',
-    database: 'dbname1',
-    username: 'username1',
-    password: 'password1',
-    pool: {
-      max: 5,
-      min: 0,
-      idle: 10000,
-    },
-    port: 5432,
-    define: {
-      charset: 'utf8',
-      timestamps: true
-    },
-    modelsFolder: path.resolve(__dirname, './models-old')
-  }
+  dialect: 'postgres',
+  host: 'localhost',
+  database: 'dbname11',
+  username: 'username1',
+  password: 'password1',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000,
+  },
+  port: 5432,
+  define: {
+    charset: 'utf8',
+    timestamps: true
+  },
+  modelsFolder: path.resolve(__dirname, './models-new')
+}
   
 //new data define
 let newDb = {
   dialect: 'postgres',
   host: 'localhost',
-  database: 'dbname2',
+  database: 'dbname22',
   username: 'username1',
   password: 'password1',
   pool: {
@@ -51,32 +51,12 @@ let newDb = {
 
 //config
 let transferConfig = {
-  array: [{
-    from: 'User', //old db Model Name
-    to: 'User', //new db Model Name
-    transfer: old => {
-      let id = gid()
-      return {
-        id,
-        username: old.username
-      }
-    }
-  }, {
-    from: 'Company', //old db Model Name
-    to: 'Company', //new db Model Name
-    transfer: old => {
-      let id = gid()
-      return {
-        id,
-        name: old.name
-      }
-    }
-  }]
+  clone: true
 }
 
 describe(pkg.name, function() {
   let sql2, sql
-  it('it should work', function(done) {
+  it('clone should work', function(done) {
 
     //init data
     co(function*() {

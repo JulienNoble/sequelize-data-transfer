@@ -41,14 +41,26 @@ function* initDb(model) {
   return sequelize
 }
 
+function mkTransferArray(sql) {
+  return Object.keys(sql.db).map(model => {
+    return {
+      from: model,
+      to: model,
+      transfer: old => old
+    }
+  })
+}
+
 function* work({oldDb, newDb, transferConfig}) {
   let t1 = new Date().getTime()
   let sq1 = yield initDb(oldDb)
   let sq2 = yield initDb(newDb)
+  let isClone = !!transferConfig.clone
+  let array = isClone ? mkTransferArray(newDb) : transferConfig.array
 
-  for(let i = 0, len = transferConfig.length;i < len;i ++) {
+  for(let i = 0, len = array;i < len;i ++) {
 
-    let conf = transferConfig[i]
+    let conf = array[i]
     let {from, to, transfer} = conf
     let rows = yield sq1.db[from].findAll()
 
@@ -63,6 +75,8 @@ function* work({oldDb, newDb, transferConfig}) {
 
     console.log('done:trasnfer old db model:', from, 'to', 'new db model:', to)
   }
+
+
 
   let t2 = new Date().getTime()
   console.log('all done:')

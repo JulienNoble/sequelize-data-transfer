@@ -15,3 +15,5 @@ before_install:
   - psql -d template1 -c "ALTER USER username1 WITH PASSWORD 'password1';"
   - psql -d template1 -c "create database dbname1;"
   - psql -d template1 -c "create database dbname2;"
+  - psql -d template1 -c "create database dbname11;"
+  - psql -d template1 -c "create database dbname22;"

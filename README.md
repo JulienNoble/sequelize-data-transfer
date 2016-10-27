@@ -51,19 +51,30 @@ let newDb = {
 }
 
 //config
-let transferConfig = [{
-  from: 'OldUser', //old db Model Name
-  to: 'User', //new db Model Name
-  transfer: old => {
-    return {
-      id: old.id,
-      name: old.user_name
+let transferConfig = {
+  array: [{
+    from: 'OldUser', //old db Model Name
+    to: 'User', //new db Model Name
+    transfer: old => {
+      return {
+        id: old.id,
+        name: old.user_name
+      }
     }
-  }
-}]
+  }]
+}
 
 //now do the transfer
 transfer({oldDb, newDb, transferConfig})
+.then(() => {
+  console.log('done')
+})
+.catch(e => {
+  console.log(e.stack)
+})
+
+//complete clone (should be same data models)
+transfer({oldDb, newDb, { clone: true }})
 .then(() => {
   console.log('done')
 })

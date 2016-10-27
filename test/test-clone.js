@@ -26,7 +26,7 @@ let oldDb = {
     charset: 'utf8',
     timestamps: true
   },
-  modelsFolder: path.resolve(__dirname, './models-new')
+  modelsFolder: path.resolve(__dirname, './models-old')
 }
   
 //new data define
@@ -46,7 +46,7 @@ let newDb = {
     charset: 'utf8',
     timestamps: true
   },
-  modelsFolder: path.resolve(__dirname, './models-new')
+  modelsFolder: path.resolve(__dirname, './models-old')
 }
 
 //config
@@ -62,18 +62,19 @@ describe(pkg.name, function() {
     co(function*() {
       sql = yield initDb(oldDb)
       sql2 = yield initDb(newDb)
-      yield sql.db.User.destroy({
-        where: {}
-      })
-      yield sql.db.Company.destroy({
-        where: {}
-      })
-      yield sql2.db.User.destroy({
-        where: {}
-      })
-      yield sql2.db.Company.destroy({
-        where: {}
-      })
+      yield sql.query('DROP TABLE "user";')
+      //yield sql.query('CREATE TABLE user')
+      yield sql.query('DROP TABLE "company";')
+      //yield sql.query('CREATE TABLE company')
+      yield sql2.query('DROP TABLE "user";')
+      //yield sql2.query('CREATE TABLE user')
+      yield sql2.query('DROP TABLE "company";')
+      //yield sql2.query('CREATE TABLE company')
+      yield sql.authenticate()
+      yield sql.sync()
+      yield sql2.authenticate()
+      yield sql2.sync()
+
       yield sql.db.User.bulkCreate([{
         username: 'x1'
       }, {

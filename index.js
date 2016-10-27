@@ -56,14 +56,12 @@ function* work({oldDb, newDb, transferConfig}) {
   let sq1 = yield initDb(oldDb)
   let sq2 = yield initDb(newDb)
   let isClone = !!transferConfig.clone
-  let array = isClone ? mkTransferArray(newDb) : transferConfig.array
-
-  for(let i = 0, len = array;i < len;i ++) {
+  let array = isClone ? mkTransferArray(sq2) : transferConfig.array
+  for(let i = 0, len = array.length;i < len;i ++) {
 
     let conf = array[i]
     let {from, to, transfer} = conf
     let rows = yield sq1.db[from].findAll()
-
     console.log('start:trasnfer old db model:', from, 'to', 'new db model:', to)
     console.log('old db', from, 'has', rows.length, 'data')
 

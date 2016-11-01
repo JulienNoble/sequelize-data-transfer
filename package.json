@@ -1,6 +1,6 @@
 {
   "name": "sequelize-data-transfer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "transfer `sequelize` db data from one db to another db, with different data model",
   "main": "index.js",
   "scripts": {

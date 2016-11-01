@@ -29,12 +29,6 @@ function* initDb(model) {
       db[mod.name] = mod
     })
 
-  Object.keys(db).forEach(modelName => {
-    if ('associate' in db[modelName].options) {
-      db[modelName].options.associate(db)
-    }
-  })
-
   sequelize.db = db
   yield sequelize.authenticate()
   yield sequelize.sync()
